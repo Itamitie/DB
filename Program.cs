@@ -10,7 +10,9 @@ namespace Db
         {
             using (var context = new SchoolContext())
             {
+                //Create Table
                 // context.Database.EnsureCreated();
+
                 // var customer = new Customer()
                 // {
                 //     Name = "Josep",
@@ -18,9 +20,11 @@ namespace Db
                 //     CreateDate = DateTime.Now
                 // };
 
+                // Insert
                 // context.Customers.Add(customer);
                 // context.SaveChanges();
 
+                //Search
                 // var a = context.Customers.FirstOrDefault(p => p.Address == "bangkok");
                 // if (a != null)
                 // {
@@ -28,14 +32,29 @@ namespace Db
                 //     Console.WriteLine(a.Address);
                 // }
 
-        
-                var list = context.Customers.Where(p => p.Address == "bangkok").First();
 
-                foreach (var item in list)
+                // var list = context.Customers.Where(p => p.Address == "bangkok").ToList();
+
+                // foreach (var item in list)
+                // {
+                //     Console.WriteLine(item.Name);
+                // }
+
+                //Update
+                // var customer = context.Customers.FirstOrDefault(p => p.Name == "Chen");
+                // if (customer != null)
+                // {
+                //     customer.Name = "Update";
+                // }
+
+                var customer = context.Customers.Where(p => p.Address == "bangkok").ToList();
+
+                foreach (var item in customer)
                 {
-                    Console.WriteLine(list);
+                    item.Address = "กรุงเทพ";
                 }
 
+                context.SaveChanges();
             }
         }
     }
